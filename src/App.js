@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {AppContext} from './appContext/AppContext'
+import { useContext, useEffect } from "react";
 
-function App() {
+import Card from './componant/Card';
+
+export default function App() {
+	const {newsData, fetchData} = useContext(AppContext);
+	useEffect(()=>{
+		fetchData();
+	},[])
+	
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    	<div>
+    		<Card newsData={newsData}/>
+    	</div>
     </div>
-  );
+  )
 }
 
-export default App;
+
