@@ -5,15 +5,21 @@
  
  function Card({newsData}){
 
+	{
+		newsData.map((news) =>{
+			console.log(news.author)
+		})
+	}
+
      return (
 		<div>
 
 			{
 				newsData.length===0 ? (<p>no post</p>):
 				(
-					newsData.map((post)=>{
-						<p>{post.author}</p>
-					})
+					newsData.map((post,index) =>{
+						return (<p>{index} {post.author} </p>)
+					})	
 				)
 			}
 
