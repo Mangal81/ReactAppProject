@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div>
     	<div>
-    		<Card newsData={newsData}/>
+    		<Card/>
     	</div>
     </div>
   )
