@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .spinner {
    width: 44.8px;
    height: 44.8px;

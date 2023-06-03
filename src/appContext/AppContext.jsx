@@ -8,10 +8,12 @@ export const AppContext = createContext();
 function AppContextProvider({ children }) {
 
 	
-	const [newsData, setNewsData]=useState([])
+	const [newsData, setNewsData]=useState([]);
+	const [loading, setLoading] = useState(false);
 	const url = `${baseUrl}&apiKey=${apiKey}`;
 	console.log(url);
 	async function fetchData() {
+		setLoading(true)
 		try {
 			const response = await fetch(url)
 			const data = await response.json();
@@ -21,12 +23,16 @@ function AppContextProvider({ children }) {
 		catch(error){
 			console.log("Error occured " , error);
 		}
+		setLoading(false);
 	}
 
 	const value = {
 		setNewsData,
 		newsData,
-		fetchData
+		fetchData,
+		loading,
+		setLoading
+		
 	}
 
 	return (

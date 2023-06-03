@@ -1,28 +1,34 @@
- import {AppContext} from '../appContext/AppContext'
- import { useContext} from "react";
- 
- function DataCard(){
+import { AppContext } from '../appContext/AppContext'
+import { useContext } from "react";
 
-	const {newsData} = useContext(AppContext);
+function DataCard() {
 
-     return (
-		<div>
-			{
-				newsData.map((post,index)=>{
-					return(
-						<div className="dataCard" key={index}>
-							<h3>{post.title}</h3>
-							<p>Author : <i>{post.author}</i></p>
+  const { newsData } = useContext(AppContext);
+
+  return (
+    <div className="flex flex-wrap justify-evenly">
+      {
+        newsData.map((post, index) => {
+          return (
+            <div className="dataCard h-[400px] w-[300px]" key={index}>
+              {/*
+							<p className="text-3xl font-bold underline">Author : {post.author}</p>
 							<p>{post.description} <button>Read More</button></p>
-							<p>Published At {post.publishedAt}</p>
-						</div>
-					)
-				})
-			}
-		</div>
-	 )
+							<p>Published At {post.publishedAt}</p>*/}
+              <div>
+                <img src={post.urlToImage}/>
+		<h3 className="font-bold">{post.title}</h3>
+		<p >{post.description}</p>
+              </div>
 
- }
- 
- export default DataCard;
- 
+            </div>
+          )
+        })
+      }
+    </div>
+  )
+
+}
+
+export default DataCard;
+
